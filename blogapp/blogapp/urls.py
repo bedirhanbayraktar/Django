@@ -15,15 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-# http://127.0.0.1:8000/  => homapage
-# http://127.0.0.1:8000/index  => homapage
-# http://127.0.0.1:8000/blogs  => blogs
-# http://127.0.0.1:8000/blogs/3  => blog-details
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls'))
-]
+    path('', include('blog.urls')),
+    path('account/', include('account.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
