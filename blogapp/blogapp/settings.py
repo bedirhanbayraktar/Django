@@ -22,13 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-hhp7dun!g$5%ufs+w@xb#3zu3a9=owei(s@zq(5jfv+^vwrv$i'
-SECRET_KEY = getenv("SECRET_KEY")
+SECRET_KEY = 'django-insecure-hhp7dun!g$5%ufs+w@xb#3zu3a9=owei(s@zq(5jfv+^vwrv$i'
+#getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = getenv("IS_DEVELOPMENT", True)
 
 ALLOWED_HOSTS = [
-    getenv("APP_HOST")
+    '127.0.0.1'
+    # getenv("APP_HOST")
 ]
 
 
@@ -86,8 +88,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'OPTIONS': {
+            'timeout': 30,
+        },
     }
 }
+
 
 
 # Password validation
